@@ -11,4 +11,5 @@
     <string name="q_find_resources">Do zasobów w aplikacji dla systemu Android odnosimy się po nazwach</string>
     <string name="correct_answer">Poprawna odpowiedź</string>
     <string name="incorrect_answer">Niepoprawna odpowiedź</string>
+    <string name="result_info">Koniec gry. Wynik: %1$d</string>
 </resources>

@@ -12,6 +12,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var nextButton: Button
     private lateinit var questionTextView: TextView
 
+    private var questionCounter: Int = -1
     private var currentIndex: Int = 0
 
     private val questions = listOf(
@@ -21,6 +22,8 @@ class MainActivity : ComponentActivity() {
         Question(R.string.q_resources, true),
         Question(R.string.q_version, false)
     )
+
+    private val arrayOfPoints = IntArray(questions.size) {0}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +48,12 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun setNextQuestion() {
+        questionCounter++
+        if (questionCounter == questions.size) {
+            Toast.makeText(this, getString(R.string.result_info, arrayOfPoints.sum()), Toast.LENGTH_LONG).show()
+            questionCounter = 0
+            arrayOfPoints.fill(0)
+        }
         questionTextView.setText(questions[currentIndex].questionId)
     }
 
@@ -53,10 +62,13 @@ class MainActivity : ComponentActivity() {
         var resultMessageId: Int = 0
 
         if (userAnswer == correctAnswer) {
+            arrayOfPoints[currentIndex] = 1
             resultMessageId = R.string.correct_answer
         } else {
+            arrayOfPoints[currentIndex] = 0
             resultMessageId = R.string.incorrect_answer
         }
         Toast.makeText(this, resultMessageId, Toast.LENGTH_SHORT).show()
     }
+
 }
