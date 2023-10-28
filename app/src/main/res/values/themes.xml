@@ -2,4 +2,9 @@
 <resources>
 
     <style name="Theme.Zad1quizz" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Inne atrybuty stylu -->
+    </style>
+
 </resources>
